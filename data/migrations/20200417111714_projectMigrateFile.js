@@ -4,7 +4,7 @@ exports.up = function(knex) {
 
     //projects
     .createTable('projects', tbl =>{
-        tbl.string('id',255).primary();
+        tbl.increments();
         tbl.string('name',255).notNullable().unique().index();
         tbl.text('description');
         tbl.boolean('is_completed').notNullable().defaultTo(false);
@@ -12,14 +12,14 @@ exports.up = function(knex) {
     
     //resources
     .createTable('resources', tbl =>{
-        tbl.string('id', 255).primary();
+        tbl.increments();
         tbl.string('name', 255).notNullable().unique().index();
         tbl.text('description');
     })
 
     //tasks
     .createTable('tasks', tbl =>{
-        tbl.string('id', 255).primary();
+        tbl.increments();
         tbl.string('description',255).notNullable().unique().index();
         tbl.text('notes');
         tbl.boolean('is_completed').notNullable().defaultTo(false);
@@ -36,7 +36,7 @@ exports.up = function(knex) {
 
     //whatNeededForProject
     .createTable('whatNeededForProject', tbl =>{
-        tbl.string('id', 255).primary();
+        tbl.increments();
 
          //foreign key
         tbl
