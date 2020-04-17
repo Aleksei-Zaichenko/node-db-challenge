@@ -60,8 +60,8 @@ function addTask(passedBodyData, passedParamsData){
 // a third intermediate table should be used
 //Every connection between a resource and a project should be added 
 //manually thorugh this function
-function addResourceToProject(passedProjectId, passedResourceId){
-    const newProjectResourceConnection = {project_id: passedProjectId, resource_id: passedResourceId}
+function addResourceToProject(passedProjectId, passedResourceID){
+    const newProjectResourceConnection = {project_id: passedProjectId, ...passedResourceID}
     return db('whatNeededForProject')
         .insert(newProjectResourceConnection)
         .then(([newPairId]) => db('whatNeededForProject').where('id', newPairId))
